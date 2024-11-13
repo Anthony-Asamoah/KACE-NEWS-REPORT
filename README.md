@@ -90,9 +90,31 @@ to make requests;
     username: admin 
     password: <your password>
 ```
-2. explore tasks
+
+2. User registration can be done in two ways:
 ```
-- get a list of tasks via GET 'http://127.0.0.1:8000/tasks'
-- create a task via POST 'http://127.0.0.1:8000/tasks'
+- make individual api calls to 'http://127.0.0.1:8000/users' then 'http://127.0.0.1:8000/staff', with the right data
+- call the register endpoint via POST 'http://127.0.0.1:8000/auth/register' with the following multipart form payload.
+  this would create both objects in one shot.
+ 
+  {
+  "username": "john_doe",
+  "email": "john.doe@example.com",
+  "password": "securepassword123",
+  "staff_type": "REPORTER",
+  "first_name": "John",
+  "last_name": "Doe",
+  "phone_number": "123-456-7890",
+  "address": "123 Main St, Some City, Some Country",
+  "date_of_birth": "1990-05-15",
+  "profile_picture": <FILE>,
+  "bio": "Reporter at XYZ News. Passionate about global affairs.",
+  "is_active": true
+}
+    
 ```
-3. explore other endpoints in the browser since that is where the docs can be found
+
+3. explore api
+```
+ visit the server url to browse through the api documentation for other api calls
+```

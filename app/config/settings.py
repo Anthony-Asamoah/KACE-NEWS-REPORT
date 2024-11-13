@@ -33,6 +33,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'rest_framework',
+
     'user',
     'staff',
     'desk',
@@ -72,6 +74,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # DRF
 REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
@@ -130,6 +139,7 @@ EMAIL_USE_TLS = ast.literal_eval(getenv_or_404('EMAIL_USE_TLS'))
 # Accounts config
 LOGIN_REDIRECT_URL = 'api-root'
 LOGOUT_REDIRECT_URL = 'api-root'
+AUTH_USER_MODEL = "user.User"
 
 # Messages Config
 MESSAGE_TAGS = {
